@@ -5,10 +5,15 @@
 }
 
 .App {
-  height: 100vh;
   width: 100vw;
   font-family: cursive;
   background-color: green;
+}
+
+@media screen and (min-width: 768px) {
+  .App {
+    height: 100vh;
+  }
 }
 
 /* CSS for GameBoard component */
@@ -40,24 +45,22 @@ h1 {
   font-family: cursive;
   width: 200px;
   font-size: 1.2rem;
-  font-weight: bolder;
-  border-radius: 0.7rem;
-  border-style: none;
+  font-weight: bold;
+  border-radius: 1rem;
   background-color: bisque;
   color: green;
-  margin-top: 4px;
-  margin-left: 55%;
+  margin: 15px;
+  /* margin-left: 55%; */
 }
 
 .button:hover {
-  border: 2px solid black;
+  border: 2px solid green;
   cursor: pointer;
 }
 
 .board {
   display: grid;
   margin: auto;
-  margin-top: 3rem;
   grid-template-columns: repeat(2, 9rem);
   place-items: center;
   row-gap: 2rem;

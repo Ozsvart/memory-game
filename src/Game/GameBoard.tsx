@@ -69,7 +69,7 @@ export function GameBoard() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Memory Game</h1>
+        <h1>Memóriajáték</h1>
       </div>
       <div className="board">
         {cardsArray.map((item) => (
@@ -84,13 +84,14 @@ export function GameBoard() {
           />
         ))}
       </div>
+
       {won !== 6 ? (
-        <div className="comments">Moves: {moves}</div>
+        <div className="comments">Lépések: {moves}</div>
       ) : (
         <div className="comments">You won in {moves} moves</div>
       )}
       <button className="button" onClick={newGame}>
-        New Game
+        Új játék
       </button>
     </div>
   );
