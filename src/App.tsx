@@ -1,12 +1,10 @@
 import "./App.css";
-import GameBoard from "./Game/GameBoard";
+import { GameBoard } from "./Game/GameBoard.tsx";
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <div className="App">
       <GameBoard />
     </div>
   );
 }
-
-export default App;

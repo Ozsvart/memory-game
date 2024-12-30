@@ -1,18 +1,29 @@
-export default function Card({
+export type CardItem = {
+  id: number;
+  name: string;
+  img: string;
+  matched: boolean;
+};
+
+type CardProps = {
+  item: CardItem;
+  handleSelectedCards: (item: CardItem) => void;
+  toggled: boolean;
+  stopflip: boolean;
+};
+
+export function Card({
   item,
   handleSelectedCards,
   toggled,
   stopflip,
-}: {
-  item: { id: number; name: string; img: string; matched: boolean };
-  handleSelectedCards: (item: object) => void;
-  toggled: boolean;
-  stopflip: boolean;
-}) {
+}: CardProps) {
   return (
     <div className="item">
       <div className={toggled ? "toggled" : ""}>
-        <img className="face" src={item.img} alt="face" />
+        <div className="face">
+          <img src={item.img} alt="face" />
+        </div>
         <div
           className="back"
           onClick={() => !stopflip && handleSelectedCards(item)}
