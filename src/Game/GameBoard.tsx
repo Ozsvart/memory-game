@@ -8,7 +8,7 @@ export function GameBoard() {
   const [firstCard, setFirstCard] = useState<CardItem | null>(null);
   const [secondCard, setSecondCard] = useState<CardItem | null>(null);
   const [stopFlip, setStopFlip] = useState(false);
-  const [won, setWon] = useState(0);
+  const [won, setWon] = useState(false);
 
   function newGame() {
     setTimeout(() => {
@@ -19,7 +19,7 @@ export function GameBoard() {
       setMoves(0);
       setFirstCard(null);
       setSecondCard(null);
-      setWon(0);
+      setWon(false);
     }, 1200);
   }
 
@@ -45,7 +45,6 @@ export function GameBoard() {
             }
           });
         });
-        setWon((preVal) => preVal + 1);
         removeSelection();
       } else {
         setTimeout(() => {
@@ -66,6 +65,13 @@ export function GameBoard() {
     newGame();
   }, []);
 
+  useEffect(() => {
+    const allMatched = cardsArray.every((card) => card.matched === true);
+    if (allMatched) {
+      setWon(true);
+    }
+  }, [cardsArray]);
+
   return (
     <div className="container">
       <div className="header">
@@ -85,10 +91,10 @@ export function GameBoard() {
         ))}
       </div>
 
-      {won !== 6 ? (
-        <div className="comments">Lépések: {moves}</div>
+      {won ? (
+        <div className="comments">{moves} lépésben nyertél!</div>
       ) : (
-        <div className="comments">You won in {moves} moves</div>
+        <div className="comments">Lépések: {moves}</div>
       )}
       <button className="button" onClick={newGame}>
         Új játék
