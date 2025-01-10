@@ -9,13 +9,20 @@ export function GameBoard() {
   const [secondCard, setSecondCard] = useState<CardItem | null>(null);
   const [stopFlip, setStopFlip] = useState(false);
   const [won, setWon] = useState(false);
+  const [numPairs, setNumPairs] = useState<number | null>(null);
+
+  function shuffleCards(arr: CardItem[]) {
+    return arr.sort(() => 0.5 - Math.random());
+  }
 
   function newGame() {
     setTimeout(() => {
       const duplicatedandShuffledCards = (cards: CardItem[]) => {
+        const shuffledCards = shuffleCards(cards);
+        const selectedCards = shuffledCards.slice(0, numPairs || cards.length);
         const duplicatedCards = [
-          ...cards,
-          ...cards.map((card) => ({ ...card, id: Math.random() })),
+          ...selectedCards,
+          ...selectedCards.map((card) => ({ ...card, id: Math.random() })),
         ];
         return duplicatedCards.sort(() => 0.5 - Math.random());
       };
@@ -94,6 +101,18 @@ export function GameBoard() {
             stopflip={stopFlip}
           />
         ))}
+        <select
+          className="selectBtn"
+          onChange={(e) => setNumPairs(Number(e.target.value))}
+          value={numPairs || ""}
+        >
+          <option value="" disabled>
+            Kártyapárok száma:
+          </option>
+          <option value="4">4</option>
+          <option value="6">6</option>
+          <option value="8">Összes</option>
+        </select>
       </div>
 
       {won ? (
@@ -101,6 +120,7 @@ export function GameBoard() {
       ) : (
         <div className="comments">Lépések: {moves}</div>
       )}
+
       <button className="button" onClick={newGame}>
         Új játék
       </button>
