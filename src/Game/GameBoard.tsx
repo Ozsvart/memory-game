@@ -12,9 +12,14 @@ export function GameBoard() {
 
   function newGame() {
     setTimeout(() => {
-      const randomOrderArray = data
-        .map((card) => ({ ...card, id: Math.random() }))
-        .sort(() => 0.5 - Math.random());
+      const duplicatedandShuffledCards = (cards: CardItem[]) => {
+        const duplicatedCards = [
+          ...cards,
+          ...cards.map((card) => ({ ...card, id: Math.random() })),
+        ];
+        return duplicatedCards.sort(() => 0.5 - Math.random());
+      };
+      const randomOrderArray = duplicatedandShuffledCards(data);
       setCardsArray(randomOrderArray);
       setMoves(0);
       setFirstCard(null);
