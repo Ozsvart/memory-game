@@ -8,15 +8,12 @@
   width: 100vw;
   font-family: cursive;
   background-color: green;
-}
-
-@media screen and (min-width: 768px) {
-  .App {
+  @media screen and (min-width: 768px) {
     height: 100vh;
   }
 }
 
-/* CSS for GameBoard component */
+/* GameBoard component */
 .container {
   display: flex;
   flex-direction: column;
@@ -82,7 +79,7 @@ h1 {
   border-radius: 2rem;
 }
 
-/* CSS for Card component */
+/* Card component */
 .item {
   position: relative;
   width: 150px;
@@ -127,7 +124,6 @@ h1 {
 
 .item .face {
   transform: rotateY(90deg);
-  backface-visibility: hidden;
   transition: all ease-in 0.25s;
   z-index: 2;
 }
@@ -135,7 +131,6 @@ h1 {
 .item .back {
   transform: rotateY(0deg);
   transition: all ease-in 0.25s;
-  transition-delay: 0.25s;
   z-index: 1;
 }
 
@@ -146,5 +141,5 @@ h1 {
 
 .toggled .back {
   transform: rotateY(90deg);
-  transition-delay: 0s;
+  /* transition-delay: 0s; */
 }

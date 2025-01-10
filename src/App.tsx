@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { GameBoard } from "./Game/GameBoard.tsx";
 
 export default function App() {
