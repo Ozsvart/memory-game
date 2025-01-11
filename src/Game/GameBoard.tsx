@@ -101,18 +101,25 @@ export function GameBoard() {
             stopflip={stopFlip}
           />
         ))}
-        <select
-          className="selectBtn"
-          onChange={(e) => setNumPairs(Number(e.target.value))}
-          value={numPairs || ""}
-        >
-          <option value="" disabled>
-            Kártyapárok száma:
-          </option>
-          <option value="4">4</option>
-          <option value="6">6</option>
-          <option value="8">Összes</option>
-        </select>
+
+        <div className="buttons">
+          <select
+            className="selectBtn"
+            onChange={(e) => setNumPairs(Number(e.target.value))}
+            value={numPairs || ""}
+          >
+            <option value="" disabled>
+              Kártyapárok száma:
+            </option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">Összes</option>
+          </select>
+
+          <button className="button" onClick={newGame}>
+            Új játék
+          </button>
+        </div>
       </div>
 
       {won ? (
@@ -120,10 +127,6 @@ export function GameBoard() {
       ) : (
         <div className="comments">Lépések: {moves}</div>
       )}
-
-      <button className="button" onClick={newGame}>
-        Új játék
-      </button>
     </div>
   );
 }

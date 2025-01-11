@@ -30,6 +30,7 @@
       color: ivory;
     }
   }
+
   .board {
     display: grid;
     margin: auto;
@@ -40,32 +41,43 @@
     @media screen and (min-width: 768px) {
       grid-template-columns: repeat(4, 9rem);
     }
+    .buttons {
+      display: flex;
+      align-items: center;
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.8rem;
+        font-family: cursive;
+        width: 200px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 1rem;
+        background-color: bisque;
+        color: green;
+        margin: 15px;
+        &:hover {
+          border: 2px solid green;
+          cursor: pointer;
+        }
+      }
+      .selectBtn {
+        width: 200px;
+        margin: 0 auto;
+        background-color: bisque;
+        padding: 1rem;
+        border-radius: 15px;
+      }
+    }
   }
   .comments {
     padding: 0.25rem 1rem;
     background-color: white;
-    margin: auto;
+    margin: 10px auto;
     margin-top: 40px;
     text-align: center;
     border-radius: 2rem;
-  }
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0.8rem;
-    font-family: cursive;
-    width: 200px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 1rem;
-    background-color: bisque;
-    color: green;
-    margin: 15px;
-    &:hover {
-      border: 2px solid green;
-      cursor: pointer;
-    }
   }
 }
 
@@ -118,5 +130,8 @@
     border-radius: 50%;
     transform: rotateY(0deg);
     transition: all ease-in 0.25s;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
